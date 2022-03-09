@@ -7,12 +7,22 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.jjossie.bokeh.data.Repository
+import com.jjossie.bokeh.data.model.CompletionConditionType
+import com.jjossie.bokeh.data.model.GoalList
+import com.jjossie.bokeh.data.model.Todo
+import com.jjossie.bokeh.data.model.TodoList
 
 class MainActivity : AppCompatActivity() {
+
+    val repo = Repository()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+
+        // Set Up Navigation (code provided by Android Studio Template)
         val navView: BottomNavigationView = findViewById(R.id.nav_view)
 
         val navController = findNavController(R.id.nav_host_fragment)
@@ -22,5 +32,9 @@ class MainActivity : AppCompatActivity() {
                 R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_notifications))
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+
+
     }
+
+
 }
