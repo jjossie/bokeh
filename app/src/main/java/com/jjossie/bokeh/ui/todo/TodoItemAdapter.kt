@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
@@ -20,7 +21,7 @@ class TodoItemAdapter(
 
     private val context: Context = owner.requireContext()
 
-    class TodoItemViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
+    class TodoItemViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
         val titleTextView: TextView = view.findViewById(R.id.todo_item_title)
         val dateTextView: TextView = view.findViewById(R.id.date_text)
     }
@@ -32,6 +33,14 @@ class TodoItemAdapter(
     }
 
     override fun onBindViewHolder(holder: TodoItemViewHolder, position: Int) {
+
+        holder.view.setOnClickListener {
+            // Select the next item logically (i.e. tell the ViewModel to do it)
+            // This depends on the RecyclerView order matching the ViewModel ArrayList order
+            viewModel.select(position)
+            // Navigate to next component // TODO
+            Toast.makeText(owner.requireContext(), "clicked $position", Toast.LENGTH_SHORT).show()
+        }
 
         // This is where we observe the LiveData! Might not be the most efficient thing ever.
         viewModel.todos.observe(owner, Observer {

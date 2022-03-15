@@ -14,7 +14,7 @@ class TodoViewModel : ViewModel() {
     val selectedItem = MutableLiveData<Todo>()
     val todos: LiveData<ArrayList<Todo>> = _todos
 
-    fun select(item: Todo) {
-        selectedItem.value = item
+    fun select(position: Int) {
+        selectedItem.value = _todos.value!![position] // Is !! a code smell?
     }
 }
