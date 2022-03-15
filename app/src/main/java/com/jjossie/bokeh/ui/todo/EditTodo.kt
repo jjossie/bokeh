@@ -14,19 +14,18 @@ class EditTodo : Fragment() {
         fun newInstance() = EditTodo()
     }
 
-    private lateinit var viewModel: EditTodoViewModel
+    private lateinit var viewModel: TodoViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.edit_todo_fragment, container, false)
-    }
+        val root = inflater.inflate(R.layout.edit_todo_fragment, container, false)
+        viewModel = ViewModelProvider(this).get(TodoViewModel::class.java)
+        
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(EditTodoViewModel::class.java)
-        // TODO: Use the ViewModel
+
+        return root
     }
 
 }
