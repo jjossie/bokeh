@@ -1,5 +1,7 @@
 package com.jjossie.bokeh.ui.todo
 
+import android.os.Debug
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -15,6 +17,8 @@ class TodoViewModel : ViewModel() {
     val todos: LiveData<ArrayList<Todo>> = _todos
 
     fun select(position: Int) {
-        selectedItem.value = _todos.value!![position] // Is !! a code smell?
+        val todo = _todos.value!![position]
+        selectedItem.value = todo // Is !! a code smell?
+        Log.d("TodoViewModel", "selected $todo")
     }
 }

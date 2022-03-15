@@ -9,7 +9,15 @@
         android:id="@+id/navigation_home"
         android:name="com.jjossie.bokeh.ui.todo.TodoFragment"
         android:label="@string/title_home"
-        tools:layout="@layout/fragment_todo" />
+        tools:layout="@layout/fragment_todo" >
+        <action
+            android:id="@+id/action_navigation_home_to_editTodo"
+            app:destination="@id/editTodo"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_dashboard"
@@ -22,4 +30,9 @@
         android:name="com.jjossie.bokeh.ui.notifications.NotificationsFragment"
         android:label="@string/title_notifications"
         tools:layout="@layout/fragment_notifications" />
+    <fragment
+        android:id="@+id/editTodo"
+        android:name="com.jjossie.bokeh.ui.todo.EditTodo"
+        android:label="edit_todo_fragment"
+        tools:layout="@layout/edit_todo_fragment" />
 </navigation>

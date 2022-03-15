@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.jjossie.bokeh.R
 import com.jjossie.bokeh.data.model.Todo
@@ -39,7 +40,8 @@ class TodoItemAdapter(
             // This depends on the RecyclerView order matching the ViewModel ArrayList order
             viewModel.select(position)
             // Navigate to next component // TODO
-            Toast.makeText(owner.requireContext(), "clicked $position", Toast.LENGTH_SHORT).show()
+            owner.findNavController().navigate(R.id.action_navigation_home_to_editTodo)
+//            Toast.makeText(owner.requireContext(), "clicked $position", Toast.LENGTH_SHORT).show()
         }
 
         // This is where we observe the LiveData! Might not be the most efficient thing ever.
