@@ -8,4 +8,5 @@
     <string name="label_due_date">Due Date</string>
     <string name="title_todos">To-Do</string>
     <string name="title_goals">Goals</string>
+    <string name="todo_description_hint">Here\'s what I need to do...</string>
 </resources>

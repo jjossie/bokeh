@@ -29,11 +29,11 @@ class EditTodo : Fragment() {
         // Get component Views
         val textViewTodoName: EditText = root.findViewById(R.id.editTextTodoName)
         val checkBoxTodoComplete: CheckBox = root.findViewById(R.id.checkBoxTodoComplete)
-//        val labelDueDate: TextView = root.findViewById(R.id.labelDueDate)
-        val editDateDueDate: EditText = root.findViewById(R.id.editDateDueDate)
+        val dateCreatedText: TextView = root.findViewById(R.id.dateCreatedText)
+        val dateCompletedText: TextView = root.findViewById(R.id.dateCompletedText)
 
         // Set Event Listeners
-        checkBoxTodoComplete.setOnClickListener{
+        checkBoxTodoComplete.setOnClickListener {
             val box: CheckBox = it as CheckBox
             model.setCurrentTodoComplete(box.isChecked)
         }
@@ -44,13 +44,16 @@ class EditTodo : Fragment() {
             Log.d("EditTodoFrag", "Trying to observe changes to $it")
             textViewTodoName.hint = it.name
             checkBoxTodoComplete.isChecked = it.completed
-            editDateDueDate.hint =
-                it.getCompletionDate().toString() // TODO lol this isn't even the right feature
+            dateCreatedText.text = "Created ${it.getCreationDate()}"
+            if (it.getCompletionDate() != null){
+                dateCompletedText.text = "Completed ${it.getCompletionDate()}"
+            } else {
+                dateCompletedText.text = ""
+            }
         }
 
         return root
     }
-
 
 
 }
