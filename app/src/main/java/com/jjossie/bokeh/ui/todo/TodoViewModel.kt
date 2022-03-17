@@ -32,4 +32,12 @@ class TodoViewModel : ViewModel() {
         }
     }
 
+    fun setCurrentTodoComplete(completed: Boolean){
+        if (completed){
+            selectedItem.value!!.complete()
+        } else {
+            selectedItem.value!!.incomplete()
+        }
+    }
+
 }

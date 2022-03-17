@@ -32,13 +32,21 @@ class EditTodo : Fragment() {
 //        val labelDueDate: TextView = root.findViewById(R.id.labelDueDate)
         val editDateDueDate: EditText = root.findViewById(R.id.editDateDueDate)
 
+        // Set Event Listeners
+        checkBoxTodoComplete.setOnClickListener{
+            val box: CheckBox = it as CheckBox
+            model.setCurrentTodoComplete(box.isChecked)
+        }
+
+
         // Observe LiveData
-        model.selectedItem.observe(viewLifecycleOwner, Observer {
+        model.selectedItem.observe(viewLifecycleOwner) {
             Log.d("EditTodoFrag", "Trying to observe changes to $it")
             textViewTodoName.hint = it.name
             checkBoxTodoComplete.isChecked = it.completed
-            editDateDueDate.hint = it.getCompletionDate().toString() // TODO lol this isn't even the right feature
-        })
+            editDateDueDate.hint =
+                it.getCompletionDate().toString() // TODO lol this isn't even the right feature
+        }
 
         return root
     }
