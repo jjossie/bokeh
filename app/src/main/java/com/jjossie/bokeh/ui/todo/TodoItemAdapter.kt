@@ -1,9 +1,11 @@
 package com.jjossie.bokeh.ui.todo
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.CheckBox
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
@@ -25,6 +27,7 @@ class TodoItemAdapter(
     class TodoItemViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
         val titleTextView: TextView = view.findViewById(R.id.todo_item_title)
         val dateTextView: TextView = view.findViewById(R.id.date_text)
+        val checkBox: CheckBox = view.findViewById(R.id.todo_completed_box)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TodoItemViewHolder {
@@ -41,14 +44,22 @@ class TodoItemAdapter(
             viewModel.select(position)
             // Navigate to next component // TODO
             owner.findNavController().navigate(R.id.action_navigation_home_to_editTodo)
-//            Toast.makeText(owner.requireContext(), "clicked $position", Toast.LENGTH_SHORT).show()
         }
+
+        holder.checkBox.setOnClickListener{
+            val box: CheckBox = it as CheckBox
+            viewModel.setComplete(position, it.isChecked)
+        }
+
 
         // This is where we observe the LiveData! Might not be the most efficient thing ever.
         viewModel.todos.observe(owner, Observer {
+            Log.d("TodoItemAdapter", "I'm observing")
             val item = it[position]
             holder.titleTextView.text = item.name
             holder.dateTextView.text = item.getCreationDate().format(DateTimeFormatter.ofPattern("M/dd"))
+            holder.checkBox.isChecked = item.completed
+
         })
 
     }

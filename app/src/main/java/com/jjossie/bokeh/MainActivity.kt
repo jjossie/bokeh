@@ -1,6 +1,7 @@
 package com.jjossie.bokeh
 
 import android.os.Bundle
+import androidx.activity.viewModels
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
@@ -12,6 +13,7 @@ import com.jjossie.bokeh.data.model.CompletionConditionType
 import com.jjossie.bokeh.data.model.GoalList
 import com.jjossie.bokeh.data.model.Todo
 import com.jjossie.bokeh.data.model.TodoList
+import com.jjossie.bokeh.ui.todo.TodoViewModel
 
 class MainActivity : AppCompatActivity() {
 
@@ -21,6 +23,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+
+        // Set up ViewModel // Not necessary
+//        val viewModel: TodoViewModel by viewModels()
 
         // Set Up Navigation (code provided by Android Studio Template)
         val navView: BottomNavigationView = findViewById(R.id.nav_view)

@@ -5,23 +5,20 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import com.jjossie.bokeh.R
 
 class TodoFragment : Fragment() {
 
-    private lateinit var todoViewModel: TodoViewModel
+    private val todoViewModel: TodoViewModel by activityViewModels()
 
     override fun onCreateView( // Override method, with standard parameters
             inflater: LayoutInflater,
             container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? { // Returns a View optional
-
-        // Get the ViewModel for this fragment (assigned to lateinit member var)
-        todoViewModel =
-                ViewModelProvider(this).get(TodoViewModel::class.java)
 
         // root is set to this inflated fragment
         val root = inflater.inflate(R.layout.fragment_todo, container, false)

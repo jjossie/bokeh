@@ -28,6 +28,11 @@ class Repository {
         todoList.addTodo("become wealthy")
         todoList.addTodo("go back to monke")
 
+        todoList.markTodo(1, true)
+        todoList.markTodo(5, true)
+        todoList.markTodo(6, true)
+        todoList.markTodo(9, true)
+
         goalList.addGoal("Daily Target", CompletionConditionType.Todo, 3, todoList = todoList)
         goalList.addGoal("Get Yoked", CompletionConditionType.Count, 100, units = "push-ups")
     }

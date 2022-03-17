@@ -18,7 +18,18 @@ class TodoViewModel : ViewModel() {
 
     fun select(position: Int) {
         val todo = _todos.value!![position]
-        selectedItem.value = todo // Is !! a code smell?
-        Log.d("TodoViewModel", "selected $todo")
+//        selectedItem.value = todo // Is !! a code smell?
+        selectedItem.setValue(todo)
+        Log.d("TodoViewModel", "selected ${selectedItem.value}")
     }
+
+    fun setComplete(position: Int, completed: Boolean){
+        val todo = _todos.value!![position]
+        if (completed){
+            todo.complete()
+        } else {
+            todo.incomplete()
+        }
+    }
+
 }
