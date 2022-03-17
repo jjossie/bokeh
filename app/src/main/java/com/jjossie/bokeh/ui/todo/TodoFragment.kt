@@ -14,26 +14,22 @@ class TodoFragment : Fragment() {
 
     private val todoViewModel: TodoViewModel by activityViewModels()
 
-    override fun onCreateView( // Override method, with standard parameters
+    override fun onCreateView(
             inflater: LayoutInflater,
             container: ViewGroup?,
             savedInstanceState: Bundle?
-    ): View? { // Returns a View optional
+    ): View? {
 
-        // root is set to this inflated fragment
+        // Get root View
         val root = inflater.inflate(R.layout.fragment_todo, container, false)
 
-        // This is where we grab components and bind observers?
+        // Get component Views
         val recyclerView = root.findViewById<RecyclerView>(R.id.todo_list_recycler_view)
 
-        // Now we have to learn how to observe LiveData here ... ???
+        // RecyclerView handles its own LiveData observation, we just give it the ViewModel
         recyclerView.adapter = TodoItemAdapter(this, todoViewModel)
         recyclerView.setHasFixedSize(true)
 
-//        val textView: TextView = root.findViewById(R.id.text_home)
-//        homeViewModel.text.observe(viewLifecycleOwner, Observer {
-//            textView.text = it
-//        })
         return root
     }
 

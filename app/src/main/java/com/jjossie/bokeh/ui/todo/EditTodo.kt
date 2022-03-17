@@ -18,26 +18,21 @@ import com.jjossie.bokeh.R
 
 class EditTodo : Fragment() {
 
-    companion object {
-        fun newInstance() = EditTodo()
-    }
-
-//    private lateinit var viewModel: TodoViewModel
-
     private val model: TodoViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        // Get root View
         val root = inflater.inflate(R.layout.edit_todo_fragment, container, false)
-//        viewModel = ViewModelProvider(this).get(TodoViewModel::class.java)
-
+        // Get component Views
         val textViewTodoName: EditText = root.findViewById(R.id.editTextTodoName)
         val checkBoxTodoComplete: CheckBox = root.findViewById(R.id.checkBoxTodoComplete)
 //        val labelDueDate: TextView = root.findViewById(R.id.labelDueDate)
         val editDateDueDate: EditText = root.findViewById(R.id.editDateDueDate)
 
+        // Observe LiveData
         model.selectedItem.observe(viewLifecycleOwner, Observer {
             Log.d("EditTodoFrag", "Trying to observe changes to $it")
             textViewTodoName.hint = it.name

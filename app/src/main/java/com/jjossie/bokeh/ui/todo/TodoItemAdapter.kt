@@ -1,28 +1,22 @@
 package com.jjossie.bokeh.ui.todo
 
-import android.content.Context
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.CheckBox
 import android.widget.TextView
-import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.jjossie.bokeh.R
-import com.jjossie.bokeh.data.model.Todo
 import java.time.format.DateTimeFormatter
 
 class TodoItemAdapter(
     private val owner: Fragment,
     private val viewModel: TodoViewModel
 ) : RecyclerView.Adapter<TodoItemAdapter.TodoItemViewHolder>() {
-
-    private val context: Context = owner.requireContext()
 
     class TodoItemViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
         val titleTextView: TextView = view.findViewById(R.id.todo_item_title)

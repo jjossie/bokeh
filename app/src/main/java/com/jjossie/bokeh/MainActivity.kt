@@ -23,10 +23,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-
-        // Set up ViewModel // Not necessary
-//        val viewModel: TodoViewModel by viewModels()
-
         // Set Up Navigation (code provided by Android Studio Template)
         val navView: BottomNavigationView = findViewById(R.id.nav_view)
 
