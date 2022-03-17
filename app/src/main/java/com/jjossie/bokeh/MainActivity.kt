@@ -1,7 +1,6 @@
 package com.jjossie.bokeh
 
 import android.os.Bundle
-import androidx.activity.viewModels
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
@@ -9,11 +8,6 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.jjossie.bokeh.data.Repository
-import com.jjossie.bokeh.data.model.CompletionConditionType
-import com.jjossie.bokeh.data.model.GoalList
-import com.jjossie.bokeh.data.model.Todo
-import com.jjossie.bokeh.data.model.TodoList
-import com.jjossie.bokeh.ui.todo.TodoViewModel
 
 class MainActivity : AppCompatActivity() {
 
@@ -30,7 +24,7 @@ class MainActivity : AppCompatActivity() {
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         val appBarConfiguration = AppBarConfiguration(setOf(
-                R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_notifications))
+                R.id.navigation_todos, R.id.navigation_goals, R.id.navigation_dashboard))
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
 

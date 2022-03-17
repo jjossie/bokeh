@@ -6,4 +6,6 @@
     <string name="todo_item_placeholder_text">Todo Item</string>
     <string name="date_placeholder_text">dd/mm</string>
     <string name="label_due_date">Due Date</string>
+    <string name="title_todos">To-Do</string>
+    <string name="title_goals">Goals</string>
 </resources>

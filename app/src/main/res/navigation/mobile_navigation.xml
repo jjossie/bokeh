@@ -3,13 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_home">
+    app:startDestination="@+id/navigation_todos">
 
     <fragment
-        android:id="@+id/navigation_home"
+        android:id="@+id/navigation_todos"
         android:name="com.jjossie.bokeh.ui.todo.TodoFragment"
-        android:label="@string/title_home"
-        tools:layout="@layout/fragment_todo" >
+        android:label="@string/title_todos"
+        tools:layout="@layout/fragment_todo">
         <action
             android:id="@+id/action_navigation_home_to_editTodo"
             app:destination="@id/editTodo"
@@ -20,19 +20,24 @@
     </fragment>
 
     <fragment
-        android:id="@+id/navigation_dashboard"
+        android:id="@+id/navigation_goals"
         android:name="com.jjossie.bokeh.ui.dashboard.DashboardFragment"
-        android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        android:label="@string/title_goals"
+        tools:layout="@layout/fragment_goals" />
 
     <fragment
-        android:id="@+id/navigation_notifications"
+        android:id="@+id/navigation_dashboard"
         android:name="com.jjossie.bokeh.ui.notifications.NotificationsFragment"
-        android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
+        android:label="@string/title_dashboard"
+        tools:layout="@layout/fragment_dashboard" />
     <fragment
         android:id="@+id/editTodo"
         android:name="com.jjossie.bokeh.ui.todo.EditTodo"
         android:label="edit_todo_fragment"
-        tools:layout="@layout/edit_todo_fragment" />
+        tools:layout="@layout/edit_todo_fragment" >
+        <action
+            android:id="@+id/action_editTodo_pop"
+            app:popUpTo="@id/editTodo"
+            app:popUpToInclusive="true" />
+    </fragment>
 </navigation>
