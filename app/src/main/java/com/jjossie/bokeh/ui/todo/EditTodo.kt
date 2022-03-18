@@ -1,20 +1,17 @@
 package com.jjossie.bokeh.ui.todo
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.CheckBox
-import android.widget.DatePicker
 import android.widget.EditText
 import android.widget.TextView
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
 import com.jjossie.bokeh.R
+import java.time.format.DateTimeFormatter
 
 class EditTodo : Fragment() {
 
@@ -44,9 +41,10 @@ class EditTodo : Fragment() {
             Log.d("EditTodoFrag", "Trying to observe changes to $it")
             textViewTodoName.hint = it.name
             checkBoxTodoComplete.isChecked = it.completed
-            dateCreatedText.text = "Created ${it.getCreationDate()}"
+            val formatter = DateTimeFormatter.ofPattern("MM/dd")
+            dateCreatedText.text = "Created ${formatter.format(it.getCreationDate())}"
             if (it.getCompletionDate() != null){
-                dateCompletedText.text = "Completed ${it.getCompletionDate()}"
+                dateCompletedText.text = "Completed ${formatter.format(it.getCompletionDate())}"
             } else {
                 dateCompletedText.text = ""
             }
