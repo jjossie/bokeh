@@ -15,7 +15,7 @@ import androidx.navigation.fragment.findNavController
 import com.jjossie.bokeh.R
 import java.time.format.DateTimeFormatter
 
-class EditTodo : Fragment() {
+class EditTodoFragment : Fragment() {
 
     private val model: TodoViewModel by activityViewModels()
 

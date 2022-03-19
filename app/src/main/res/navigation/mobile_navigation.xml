@@ -32,7 +32,7 @@
         tools:layout="@layout/fragment_dashboard" />
     <fragment
         android:id="@+id/editTodo"
-        android:name="com.jjossie.bokeh.ui.todo.EditTodo"
+        android:name="com.jjossie.bokeh.ui.todo.EditTodoFragment"
         android:label="edit_todo_fragment"
         tools:layout="@layout/edit_todo_fragment" >
         <action

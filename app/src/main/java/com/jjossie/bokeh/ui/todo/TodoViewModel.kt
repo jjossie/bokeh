@@ -18,7 +18,6 @@ class TodoViewModel : ViewModel() {
 
     fun select(position: Int) {
         val todo = _todos.value!![position]
-//        selectedItem.value = todo // Is !! a code smell?
         selectedItem.setValue(todo)
         Log.d("TodoViewModel", "selected ${selectedItem.value}")
     }
@@ -38,6 +37,13 @@ class TodoViewModel : ViewModel() {
         } else {
             selectedItem.value!!.incomplete()
         }
+    }
+
+
+    fun createNewTodo(){
+        var newTodo = Todo(12, "")
+        selectedItem.value = newTodo
+        _todos.value!!.add(newTodo)
     }
 
 }
