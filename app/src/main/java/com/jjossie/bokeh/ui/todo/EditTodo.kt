@@ -5,11 +5,13 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.CheckBox
 import android.widget.EditText
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
 import com.jjossie.bokeh.R
 import java.time.format.DateTimeFormatter
 
@@ -28,11 +30,17 @@ class EditTodo : Fragment() {
         val checkBoxTodoComplete: CheckBox = root.findViewById(R.id.checkBoxTodoComplete)
         val dateCreatedText: TextView = root.findViewById(R.id.dateCreatedText)
         val dateCompletedText: TextView = root.findViewById(R.id.dateCompletedText)
+        val saveButton: Button = root.findViewById(R.id.editTodoSaveButton)
 
         // Set Event Listeners
         checkBoxTodoComplete.setOnClickListener {
             val box: CheckBox = it as CheckBox
             model.setCurrentTodoComplete(box.isChecked)
+        }
+        saveButton.setOnClickListener{
+            // Update LiveData?
+            model.selectedItem.value!!.name = textViewTodoName.text.toString()
+            findNavController().navigateUp()
         }
 
 

@@ -12,7 +12,6 @@ import com.jjossie.bokeh.data.Repository
 
 class MainActivity : AppCompatActivity() {
 
-    val repo = Repository()
     private lateinit var appBarConfiguration: AppBarConfiguration
 
     override fun onCreate(savedInstanceState: Bundle?) {
