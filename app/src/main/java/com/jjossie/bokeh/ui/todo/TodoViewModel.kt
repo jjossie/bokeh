@@ -7,31 +7,44 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.jjossie.bokeh.data.Repository
 import com.jjossie.bokeh.data.model.Todo
+import com.jjossie.bokeh.data.model.TodoList
 
 class TodoViewModel : ViewModel() {
 
-    private val _todos = MutableLiveData<ArrayList<Todo>>().apply {
-        value = Repository().loadTodos()
+//    private val _todos = MutableLiveData<ArrayList<Todo>>().apply {
+//        value = Repository().loadTodos()
+//    }
+    private val _todoList = MutableLiveData<TodoList>().apply{
+        value = Repository().getTodoList()
     }
-    val selectedItem = MutableLiveData<Todo>()
-    val todos: LiveData<ArrayList<Todo>> = _todos
 
-    fun select(position: Int) {
+    private val _todos = MutableLiveData<ArrayList<Todo>>().apply{
+        value = _todoList.value!!.items
+    }
+
+    val selectedItem = MutableLiveData<Todo>()
+//    val draftItem = MutableLiveData<Todo>()
+
+    val todos: LiveData<ArrayList<Todo>>
+        get() {
+            return _todos
+        }
+
+
+    fun selectAtPosition(position: Int) {
         val todo = _todos.value!![position]
-        selectedItem.setValue(todo)
+        selectedItem.value = todo
+//        draftItem.value = todo
         Log.d("TodoViewModel", "selected ${selectedItem.value}")
     }
 
-    fun setComplete(position: Int, completed: Boolean){
-        val todo = _todos.value!![position]
-        if (completed){
-            todo.complete()
-        } else {
-            todo.incomplete()
-        }
+    fun markTodoAtPosition(position: Int, completed: Boolean){
+        // Because To-do IDs are one-off from recyclerView position indexes
+        _todoList.value!!.markTodo(position + 1, completed)
     }
 
     fun setCurrentTodoComplete(completed: Boolean){
+        // This logic already exists in TodoList.markTodo, but it needs a position.
         if (completed){
             selectedItem.value!!.complete()
         } else {
@@ -39,11 +52,11 @@ class TodoViewModel : ViewModel() {
         }
     }
 
-
     fun createNewTodo(){
-        var newTodo = Todo(12, "")
-        selectedItem.value = newTodo
-        _todos.value!!.add(newTodo)
+//        var newTodo = Todo(12, "")
+//        selectedItem.value = newTodo
+//        _todos.value!!.add(newTodo)
+        selectedItem.value =  _todoList.value!!.addTodo("")
     }
 
 }

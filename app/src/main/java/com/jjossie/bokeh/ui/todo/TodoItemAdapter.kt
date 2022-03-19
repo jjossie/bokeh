@@ -35,14 +35,14 @@ class TodoItemAdapter(
         holder.view.setOnClickListener {
             // Select the next item logically (i.e. tell the ViewModel to do it)
             // This depends on the RecyclerView order matching the ViewModel ArrayList order
-            viewModel.select(position)
+            viewModel.selectAtPosition(position)
             // Navigate to next component // TODO
             owner.findNavController().navigate(R.id.action_navigation_home_to_editTodo)
         }
 
         holder.checkBox.setOnClickListener{
             val box: CheckBox = it as CheckBox
-            viewModel.setComplete(position, it.isChecked)
+            viewModel.markTodoAtPosition(position, it.isChecked)
         }
 
 

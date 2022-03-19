@@ -9,10 +9,16 @@ import java.time.LocalDate
  */
 class TodoList(var name: String) : ProductivityList() {
 
-    fun addTodo(name: String) {
+    public val items: ArrayList<Todo>
+    get() {
+        return itemList as ArrayList<Todo>
+    }
+
+    fun addTodo(name: String): Todo {
         val todo = Todo(nextId, name)
         nextId++
         itemList.add(todo)
+        return todo
     }
 
     //    @Exclude

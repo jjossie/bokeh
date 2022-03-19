@@ -19,9 +19,7 @@ class Repository {
         todoList.addTodo("Take out da trash")
         todoList.addTodo("ur mum")
         todoList.addTodo("get paid")
-        todoList.addTodo("go raid")
         todoList.addTodo("gatorade")
-        todoList.addTodo("get lit")
         todoList.addTodo("do hw")
         todoList.addTodo("make new friends")
         todoList.addTodo("make an app")
@@ -41,8 +39,5 @@ class Repository {
         return todoList
     }
 
-    fun loadTodos(): ArrayList<Todo> {
-        return todoList.itemList as ArrayList<Todo>
-    }
 
 }
