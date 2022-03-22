@@ -13,4 +13,5 @@
     <string name="date_created">Date Created</string>
     <string name="date_completed">Date Completed</string>
     <string name="save">Save</string>
+    <string name="edit_todo_frag_label">Edit To-Do Item</string>
 </resources>

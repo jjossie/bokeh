@@ -48,15 +48,20 @@ class EditTodoFragment : Fragment() {
 
         // Observe LiveData
         model.selectedItem.observe(viewLifecycleOwner) {
-            Log.d("EditTodoFrag", "Trying to observe changes to $it")
+//            Log.d("EditTodoFrag", "Trying to observe changes to $it")
             editTextTodoTitle.text.insert(0, it.name)
             editTextTodoDescription.text.insert(0, it.description?: "")
             checkBoxTodoComplete.isChecked = it.completed
             val formatter = DateTimeFormatter.ofPattern("MM/dd")
             dateCreatedText.text = "Created ${formatter.format(it.getCreationDate())}"
+            // Completion date stuff
+//            Log.d("EditTodoFrag", it.render())
             if (it.getCompletionDate() != null){
+                Log.d("EditTodoFrag", "\n\n\nCompleted on ${it.getCompletionDate()}\n\n")
+
                 dateCompletedText.text = "Completed ${formatter.format(it.getCompletionDate())}"
             } else {
+                Log.d("EditTodoFrag", "\n\n\nnot completed somehow\n\n")
                 dateCompletedText.visibility = View.GONE
             }
         }

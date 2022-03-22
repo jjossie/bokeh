@@ -33,8 +33,8 @@
     <fragment
         android:id="@+id/editTodo"
         android:name="com.jjossie.bokeh.ui.todo.EditTodoFragment"
-        android:label="edit_todo_fragment"
-        tools:layout="@layout/edit_todo_fragment" >
+        android:label="@string/edit_todo_frag_label"
+        tools:layout="@layout/edit_todo_fragment">
         <action
             android:id="@+id/action_editTodo_pop"
             app:popUpTo="@id/editTodo"
