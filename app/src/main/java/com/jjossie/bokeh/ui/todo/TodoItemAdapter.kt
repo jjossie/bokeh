@@ -36,7 +36,6 @@ class TodoItemAdapter(
             // Select the next item logically (i.e. tell the ViewModel to do it)
             // This depends on the RecyclerView order matching the ViewModel ArrayList order
             viewModel.selectAtPosition(position)
-            // Navigate to next component // TODO
             owner.findNavController().navigate(R.id.action_navigation_home_to_editTodo)
         }
 

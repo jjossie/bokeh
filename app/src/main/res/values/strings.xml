@@ -9,4 +9,8 @@
     <string name="title_todos">To-Do</string>
     <string name="title_goals">Goals</string>
     <string name="todo_description_hint">Here\'s what I need to do...</string>
+    <string name="todo_title_hint">What needs done?</string>
+    <string name="date_created">Date Created</string>
+    <string name="date_completed">Date Completed</string>
+    <string name="save">Save</string>
 </resources>

@@ -26,7 +26,8 @@ class EditTodoFragment : Fragment() {
         // Get root View
         val root = inflater.inflate(R.layout.edit_todo_fragment, container, false)
         // Get component Views
-        val textViewTodoName: EditText = root.findViewById(R.id.editTextTodoName)
+        val editTextTodoTitle: EditText = root.findViewById(R.id.editTextTodoName)
+        val editTextTodoDescription: EditText = root.findViewById(R.id.editTextTodoDescription)
         val checkBoxTodoComplete: CheckBox = root.findViewById(R.id.checkBoxTodoComplete)
         val dateCreatedText: TextView = root.findViewById(R.id.dateCreatedText)
         val dateCompletedText: TextView = root.findViewById(R.id.dateCompletedText)
@@ -39,7 +40,8 @@ class EditTodoFragment : Fragment() {
         }
         saveButton.setOnClickListener{
             // Update LiveData?
-            model.selectedItem.value!!.name = textViewTodoName.text.toString()
+            model.selectedItem.value!!.name = editTextTodoTitle.text.toString()
+            model.selectedItem.value!!.description = editTextTodoDescription.text.toString()
             findNavController().navigateUp()
         }
 
@@ -47,14 +49,15 @@ class EditTodoFragment : Fragment() {
         // Observe LiveData
         model.selectedItem.observe(viewLifecycleOwner) {
             Log.d("EditTodoFrag", "Trying to observe changes to $it")
-            textViewTodoName.hint = it.name
+            editTextTodoTitle.text.insert(0, it.name)
+            editTextTodoDescription.text.insert(0, it.description?: "")
             checkBoxTodoComplete.isChecked = it.completed
             val formatter = DateTimeFormatter.ofPattern("MM/dd")
             dateCreatedText.text = "Created ${formatter.format(it.getCreationDate())}"
             if (it.getCompletionDate() != null){
                 dateCompletedText.text = "Completed ${formatter.format(it.getCompletionDate())}"
             } else {
-                dateCompletedText.text = ""
+                dateCompletedText.visibility = View.GONE
             }
         }
 

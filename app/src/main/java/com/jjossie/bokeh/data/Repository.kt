@@ -11,7 +11,7 @@ class Repository {
     private val goalList: GoalList = GoalList()
 
     init {
-        createDummyData()
+//        createDummyData()
     }
 
     private fun createDummyData(){

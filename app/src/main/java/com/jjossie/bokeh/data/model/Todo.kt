@@ -13,6 +13,8 @@ class Todo(override val id: Int = 0, var name: String) : Task() {
         private set
     var reminderDate: Long? = null // To be used in the future for reminders
         private set
+    var description: String? = null
+    // Eventually add priority
 
     fun complete() {
         completed = true
