@@ -26,12 +26,10 @@ class Todo(override val id: Int = 0, var name: String) : Task() {
         dateCompleted = null
     }
 
-    //    @Exclude
     fun getCreationDate(): LocalDate {
         return LocalDate.ofEpochDay(dateCreated)
     }
 
-    //    @Exclude
     fun getCompletionDate(): LocalDate? {
         return dateCompleted?.let { LocalDate.ofEpochDay(it) }
     }

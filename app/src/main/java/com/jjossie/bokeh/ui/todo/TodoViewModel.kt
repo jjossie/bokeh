@@ -11,9 +11,6 @@ import com.jjossie.bokeh.data.model.TodoList
 
 class TodoViewModel : ViewModel() {
 
-//    private val _todos = MutableLiveData<ArrayList<Todo>>().apply {
-//        value = Repository().loadTodos()
-//    }
     private val _todoList = MutableLiveData<TodoList>().apply{
         value = Repository().getTodoList()
     }
@@ -23,7 +20,6 @@ class TodoViewModel : ViewModel() {
     }
 
     val selectedItem = MutableLiveData<Todo>()
-//    val draftItem = MutableLiveData<Todo>()
 
     val todos: LiveData<ArrayList<Todo>>
         get() {
@@ -34,7 +30,6 @@ class TodoViewModel : ViewModel() {
     fun selectAtPosition(position: Int) {
         val todo = _todos.value!![position]
         selectedItem.value = todo
-//        draftItem.value = todo
         Log.d("TodoViewModel", "selected ${selectedItem.value}")
     }
 
@@ -53,9 +48,6 @@ class TodoViewModel : ViewModel() {
     }
 
     fun createNewTodo(){
-//        var newTodo = Todo(12, "")
-//        selectedItem.value = newTodo
-//        _todos.value!!.add(newTodo)
         selectedItem.value =  _todoList.value!!.addTodo("")
     }
 

@@ -20,6 +20,7 @@ class TodoItemAdapter(
 
     class TodoItemViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
         val titleTextView: TextView = view.findViewById(R.id.todo_item_title)
+        val descriptionTextView: TextView = view.findViewById(R.id.todoCardDescriptionText)
         val dateTextView: TextView = view.findViewById(R.id.date_text)
         val checkBox: CheckBox = view.findViewById(R.id.todo_completed_box)
     }
@@ -39,7 +40,7 @@ class TodoItemAdapter(
             owner.findNavController().navigate(R.id.action_navigation_home_to_editTodo)
         }
 
-        holder.checkBox.setOnClickListener{
+        holder.checkBox.setOnClickListener {
             val box: CheckBox = it as CheckBox
             viewModel.markTodoAtPosition(position, it.isChecked)
         }
@@ -50,8 +51,15 @@ class TodoItemAdapter(
             Log.d("TodoItemAdapter", "I'm observing")
             val item = it[position]
             holder.titleTextView.text = item.name
-            holder.dateTextView.text = item.getCreationDate().format(DateTimeFormatter.ofPattern("M/dd"))
+            holder.dateTextView.text =
+                item.getCreationDate().format(DateTimeFormatter.ofPattern("M/dd"))
             holder.checkBox.isChecked = item.completed
+            if (!item.description.isNullOrBlank()) {
+                holder.descriptionTextView.text = item.description
+                holder.descriptionTextView.visibility = View.VISIBLE
+            } else {
+                holder.descriptionTextView.visibility = View.GONE
+            }
 
         })
 
