@@ -1,6 +1,9 @@
 # Overview
 
 Bokeh is (eventually going to be) an app where you can create to-dos and personal goals in order to narrow your focus to what needs to be accomplished in a given day.
+The name comes from the word describing the blur effect created in photos by using a camera lens with a shallow depth of field. The unimportant parts of the picture are blurred, beautifully drawing one's focus to the subject. This is what a good productivity app should do - blur out what's unnecessary and narrow your focus to what's most important.
+
+For now, however, it's just a barebones to-do list app.
 
 I've created this app sort of as a way to re-learn Android app development, implementing best practices such as:
 * Model-View-ViewModel architecture (MVVM, as opposed to MVC architecture)
