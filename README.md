@@ -3,7 +3,7 @@
 Bokeh is (eventually going to be) an app where you can create to-dos and personal goals in order to narrow your focus to what needs to be accomplished in a given day.
 
 I've created this app sort of as a way to re-learn Android app development, implementing best practices such as:
-* Model-View-ViewModel architecture
+* Model-View-ViewModel architecture (MVVM, as opposed to MVC architecture)
 * Using LiveData for consistent data display
 * Implmenting Android Jetpack Navigation
 * Properly using RecyclerViews and Adapters
