@@ -8,7 +8,7 @@ For now, however, it's just a barebones to-do list app.
 I've created this app sort of as a way to re-learn Android app development, implementing best practices such as:
 * Model-View-ViewModel architecture (MVVM, as opposed to MVC architecture)
 * Using LiveData for consistent data display
-* Implmenting Android Jetpack Navigation
+* Implementing Android Jetpack Navigation
 * Properly using RecyclerViews and Adapters
 
 [Watch the Demonstration and Code Walkthrough](https://youtu.be/rHdI0tBf9NY)
